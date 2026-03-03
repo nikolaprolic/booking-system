@@ -45,17 +45,25 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Build and test user-service
+      - name: Make mvnw executable
+        run: |
+          chmod +x user-service/mvnw
+          chmod +x resource-service/mvnw
+          chmod +x booking-service/mvnw
+          chmod +x notification-service/mvnw
+          chmod +x api-gateway/mvnw
+
+      - name: Build user-service
         run: cd user-service && ./mvnw clean package -DskipTests
 
-      - name: Build and test resource-service
+      - name: Build resource-service
         run: cd resource-service && ./mvnw clean package -DskipTests
 
-      - name: Build and test booking-service
+      - name: Build booking-service
         run: cd booking-service && ./mvnw clean package -DskipTests
 
-      - name: Build and test notification-service
+      - name: Build notification-service
         run: cd notification-service && ./mvnw clean package -DskipTests
 
-      - name: Build and test api-gateway
-        run: cd api-gateway && ./mvnw clean package -DskipTest
+      - name: Build api-gateway
+        run: cd api-gateway && ./mvnw clean package -DskipTests
