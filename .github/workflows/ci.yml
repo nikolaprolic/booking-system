@@ -67,3 +67,14 @@ jobs:
 
       - name: Build api-gateway
         run: cd api-gateway && ./mvnw clean package -DskipTests
+
+      - name: SonarCloud analysis
+        env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          cd user-service && ./mvnw sonar:sonar \
+            -Dsonar.projectKey=nikolaprolic_booking-system \
+            -Dsonar.organization=nikolaprolic \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.qualitygate.wait=false && cd ..

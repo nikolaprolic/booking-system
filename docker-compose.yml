@@ -1,4 +1,4 @@
-version: '3.8'
+
 
 services:
   postgres:
@@ -127,14 +127,22 @@ services:
     image: grafana/grafana
     container_name: grafana
     ports:
-      - "3000:3000"
-    environment:
-      GF_SECURITY_ADMIN_PASSWORD: admin
-    depends_on:
-      - prometheus
+      - "9090:9090"
     networks:
       - booking-network
-      -
+
+  grafana:
+      image: grafana/grafana
+      container_name: grafana
+      ports:
+        - "3000:3000"
+      environment:
+        GF_SECURITY_ADMIN_PASSWORD: admin
+      depends_on:
+        - prometheus
+      networks:
+        - booking-network
+
 networks:
   booking-network:
     driver: bridge
