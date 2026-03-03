@@ -136,6 +136,14 @@ services:
       networks:
         - booking-network
 
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - booking-network
+
 networks:
   booking-network:
     driver: bridge
