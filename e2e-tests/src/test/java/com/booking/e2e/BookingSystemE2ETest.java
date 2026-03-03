@@ -1,5 +1,6 @@
 package com.booking.e2e;
 
+import org.junit.jupiter.api.Disabled;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.*;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.*;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
+@Disabled("E2E tests require running services - run locally")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class BookingSystemE2ETest {
 
