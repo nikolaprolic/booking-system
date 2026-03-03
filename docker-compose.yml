@@ -113,15 +113,15 @@ services:
     networks:
       - booking-network
 
-prometheus:
-  image: prom/prometheus
-  container_name: prometheus
-  volumes:
-    - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
-  ports:
-    - "9090:9090"
-  networks:
-    - booking-network
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - booking-network
 
   grafana:
     image: grafana/grafana
