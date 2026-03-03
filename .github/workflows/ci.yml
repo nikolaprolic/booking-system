@@ -78,3 +78,6 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.qualitygate.wait=false && cd ..
+
+      - name: Run E2E tests
+        run: cd e2e-tests && mvn test
