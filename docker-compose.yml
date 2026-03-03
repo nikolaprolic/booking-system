@@ -123,13 +123,6 @@ services:
     networks:
       - booking-network
 
-  grafana:
-    image: grafana/grafana
-    container_name: grafana
-    ports:
-      - "9090:9090"
-    networks:
-      - booking-network
 
   grafana:
       image: grafana/grafana
