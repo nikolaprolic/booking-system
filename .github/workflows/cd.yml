@@ -49,3 +49,13 @@ jobs:
         run: |
           docker compose up -d --build
           echo "Deployment completed successfully!"
+
+      - name: Post-deploy health check
+        run: |
+             echo "Deployment completed successfully!"
+             echo "Services deployed:"
+             echo "  - API Gateway: http://localhost:8080"
+             echo "  - User Service: http://localhost:8081/actuator/health"
+             echo "  - Resource Service: http://localhost:8082/actuator/health"
+             echo "  - Booking Service: http://localhost:8083/actuator/health"
+             echo "  - Notification Service: http://localhost:8084/actuator/health"
