@@ -68,6 +68,14 @@ jobs:
       - name: Build api-gateway
         run: cd api-gateway && ./mvnw clean package -DskipTests
 
+      - name: Build and tag Docker images
+        run: |
+              docker build -t booking/user-service:latest -t booking/user-service:${{ github.sha }} ./user-service
+              docker build -t booking/resource-service:latest -t booking/resource-service:${{ github.sha }} ./resource-service
+              docker build -t booking/booking-service:latest -t booking/booking-service:${{ github.sha }} ./booking-service
+              docker build -t booking/notification-service:latest -t booking/notification-service:${{ github.sha }} ./notification-service
+              docker build -t booking/api-gateway:latest -t booking/api-gateway:${{ github.sha }} ./api-gateway
+
       - name: SonarCloud analysis
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -81,3 +89,4 @@ jobs:
 
       - name: Run E2E tests
         run: cd e2e-tests && mvn test
+
